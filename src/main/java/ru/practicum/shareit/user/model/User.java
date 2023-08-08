@@ -9,7 +9,9 @@ import javax.validation.constraints.Size;
  * TODO Sprint add-controllers.
  */
 
-@Data
+@Builder
+@Getter
+@Setter
 @AllArgsConstructor
 public class User {
     private long id;
