@@ -1,14 +1,21 @@
 package ru.practicum.shareit.item.model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 import ru.practicum.shareit.user.model.User;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-
-@Data
+/**
+ * TODO Sprint add-controllers.
+ */
+@Builder
+@Getter
+@Setter
 @AllArgsConstructor
 public class Item {
     private long id;
