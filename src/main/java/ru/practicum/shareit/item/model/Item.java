@@ -9,6 +9,7 @@ import javax.validation.constraints.Size;
 
 
 @Data
+@Builder
 @AllArgsConstructor
 public class Item {
     private long id;

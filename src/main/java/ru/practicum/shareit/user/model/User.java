@@ -10,6 +10,7 @@ import javax.validation.constraints.Size;
  */
 
 @Data
+@Builder
 @AllArgsConstructor
 public class User {
     private long id;
