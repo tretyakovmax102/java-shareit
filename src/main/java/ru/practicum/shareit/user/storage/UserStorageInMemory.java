@@ -71,7 +71,7 @@ public class UserStorageInMemory implements UserStorage {
         log.info("Users deleted");
     }
 
-    private boolean isValidEmail(Long id, String email) { //проверка занятости email
+    private boolean isValidEmail(Long id, String email) {
         if (!(getAll().stream()
                 .filter(u -> u.getId() != id)
                 .filter(u -> email.equals(u.getEmail())).count() == 0)) {

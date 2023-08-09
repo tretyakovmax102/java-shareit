@@ -18,7 +18,7 @@ public class User {
     @Size(max = 50)
     private String name;
     @NotBlank
-    @Email
+    @Email(message = "incorrect email")
     @Size(max = 256)
     private String email;
 }
