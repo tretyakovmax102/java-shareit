@@ -31,4 +31,24 @@ public class ErrorHandler {
         String errorMessage = "NotFoundException: " + e.getMessage();
         return new ErrorResponse(errorMessage);
     }
+
+    @ExceptionHandler
+    @ResponseStatus (HttpStatus.FORBIDDEN)
+    public ErrorResponse handleForbiddenException(final ForbiddenException e) {
+        String errorMessage = "ForbiddenException: " + e.getMessage();
+        return new ErrorResponse(errorMessage);
+    }
+    @ExceptionHandler
+    @ResponseStatus (HttpStatus.INTERNAL_SERVER_ERROR)
+    public ErrorResponse handleExceptionForUnsupport(final ExceptionForUnsupport e) {
+        String strError = e.getMessage();
+        return new ErrorResponse(strError);
+    }
+
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ErrorResponse handleThrowable(final Throwable e) {
+        String strError = e.getMessage();
+        return new ErrorResponse(strError);
+    }
 }

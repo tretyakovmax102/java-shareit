@@ -21,37 +21,44 @@ import java.util.Map;
 @RequiredArgsConstructor
 @RequestMapping("/items")
 public class ItemController {
+    private static final String line = "X-Sharer-User-Id";
     private final ItemService itemService;
 
     @GetMapping("/{itemId}")
-    public ItemDto get(@PathVariable long itemId) {
-        return itemService.get(itemId);
+    public ItemDto getItem(@RequestHeader(line) long userId, @PathVariable long itemId) {
+        return itemService.getItemDtoById(itemId, userId);
     }
 
     @GetMapping
-    public List<ItemDto> getAllItemsUser(@RequestHeader("X-Sharer-User-Id") long ownerId) {
-        return itemService.getAllItemsUser(ownerId);
+    public List<ItemDto> getAll(@RequestHeader(line) long ownerId) {
+        return itemService.getAllUserItems(ownerId);
     }
 
     @PostMapping
-    public ItemDto create(@RequestHeader("X-Sharer-User-Id") long ownerId, @Valid @RequestBody @NotNull ItemDto itemDto) {
-        return itemService.create(ownerId, ItemMapper.fromItem(itemDto));
-    }
-
-    @PatchMapping("/{itemId}")
-    public ItemDto patch(@RequestHeader("X-Sharer-User-Id") long ownerId, @PathVariable long itemId,
-                         @RequestBody @NotNull Map<String, String> updates) {
-        return itemService.update(ownerId, itemId, updates);
+    public ItemDto create(@RequestHeader(line) long ownerId, @Valid @RequestBody ItemDto itemDto) {
+        return itemService.add(ownerId, ItemMapper.toItem(itemDto));
     }
 
     @GetMapping("/search")
-    public List<ItemDto> search(@RequestParam(name = "text") String text) {
-        return itemService.search(text);
+    public List<ItemDto> searchItems(@RequestHeader(line) long userId, @RequestParam(name = "text") String text) {
+        return itemService.searchItems(userId, text);
     }
 
     @DeleteMapping("/{itemId}")
-    public void delete(@PathVariable long itemId) {
-        itemService.delete(itemId);
+    public void delete(@RequestHeader(line) long ownerId, @PathVariable long itemId) {
+        itemService.delete(ownerId, itemId);
+    }
+
+    @PatchMapping("/{itemId}")
+    public ItemDto update(@RequestHeader(line) long ownerId, @PathVariable long itemId,
+                          @RequestBody @NotNull Map<String, String> updates) {
+        return itemService.update(ownerId, itemId, updates);
+    }
+
+    @PostMapping("/{itemId}/comment")
+    public CommentDto addComment(@RequestHeader(line) long userId, @PathVariable long itemId,
+                                 @Valid @RequestBody CommentDto commentDto) {
+        return itemService.addComment(userId, itemId, commentDto);
     }
 
 }
