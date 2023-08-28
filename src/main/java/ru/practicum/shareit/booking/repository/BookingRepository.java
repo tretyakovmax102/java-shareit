@@ -51,7 +51,8 @@ public interface BookingRepository extends JpaRepository<Booking, Long> {
             "AND i.start < :dateTime " +
             "AND i.end > :dateTime " +
             "ORDER BY i.start DESC")
-    List<Booking> findAllByBookerIdAndStartBeforeAndEndAfter(@Param("bookerId")long bookerId, @Param("dateTime")LocalDateTime dateTime);
+    List<Booking> findAllByBookerIdAndStartBeforeAndEndAfter(@Param("bookerId")long bookerId,
+                                                             @Param("dateTime")LocalDateTime dateTime);
 
     @Query(value = "SELECT i FROM Booking i " +
             "join fetch i.item AS a " +

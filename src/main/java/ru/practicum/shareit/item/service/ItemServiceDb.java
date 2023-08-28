@@ -46,7 +46,7 @@ public class ItemServiceDb implements ItemService {
     public ItemDto update(Long ownerId, Long itemId, Map<String, String> updates) {
         Item item = getItemById(itemId);
         if (!getOwnerId(itemId).equals(ownerId)) {
-            throw new NotFoundException("user musnt be owner this item");
+            throw new NotFoundException("user mustn't be owner this item");
         }
         if (updates.containsKey("name") && !updates.get("name").isBlank()) {
             String value = updates.get("name");

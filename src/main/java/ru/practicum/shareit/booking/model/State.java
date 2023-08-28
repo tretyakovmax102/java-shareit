@@ -1,5 +1,7 @@
 package ru.practicum.shareit.booking.model;
 
+import ru.practicum.shareit.exception.ExceptionForUnsupport;
+
 public enum State {
     ALL,
     CURRENT,

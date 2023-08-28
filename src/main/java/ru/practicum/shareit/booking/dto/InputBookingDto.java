@@ -18,9 +18,9 @@ public class InputBookingDto {
     @NotNull
     private Long itemId;
     @NotNull(message = "start = null")
-    @FutureOrPresent(message = "start mustnt be future")
+    @FutureOrPresent(message = "start mustn't be future")
     private LocalDateTime start;
     @NotNull(message = "end = null")
-    @Future(message = "end mustnt be past")
+    @Future(message = "end mustn't be past")
     private LocalDateTime end;
 }

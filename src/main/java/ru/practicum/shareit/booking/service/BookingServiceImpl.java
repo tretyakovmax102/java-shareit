@@ -25,8 +25,6 @@ public class BookingServiceImpl implements BookingService {
     private final UserRepository userRepository;
     private final ItemRepository itemRepository;
 
-
-
     @Override
     @Transactional
     public OutputBookingDto create(InputBookingDto bookingDto, Long userId) {
@@ -36,10 +34,10 @@ public class BookingServiceImpl implements BookingService {
                 .orElseThrow(() -> new NotFoundException("item not found"));
         if (bookingDto.getStart().isAfter(bookingDto.getEnd()) ||
                 bookingDto.getStart().isEqual(bookingDto.getEnd())) {
-            throw new ValidationException("time isnt correct");
+            throw new ValidationException("time is not correct");
         }
         if (item.getOwner().getId().equals(user.getId())) {
-            throw new NotFoundException("booker musnt be owner");
+            throw new NotFoundException("booker mustn't be owner");
         }
         if (item.getAvailable()) {
             Booking booking = Booking.builder()
