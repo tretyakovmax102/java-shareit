@@ -38,6 +38,7 @@ public class ErrorHandler {
         String errorMessage = "ForbiddenException: " + e.getMessage();
         return new ErrorResponse(errorMessage);
     }
+
     @ExceptionHandler
     @ResponseStatus (HttpStatus.INTERNAL_SERVER_ERROR)
     public ErrorResponse handleExceptionForUnsupport(final ExceptionForUnsupport e) {
@@ -51,4 +52,5 @@ public class ErrorHandler {
         String strError = e.getMessage();
         return new ErrorResponse(strError);
     }
+
 }
