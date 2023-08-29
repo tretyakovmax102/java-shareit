@@ -14,34 +14,34 @@ import java.util.List;
 @RequestMapping(path = "/bookings")
 @RequiredArgsConstructor
 public class BookingController {
-    private static final String line = "X-Sharer-User-Id";
+    private static final String LINE = "X-Sharer-User-Id";
     private final BookingService bookingService;
 
     @GetMapping("/{bookingId}")
-    public OutputBookingDto getBookingDto(@RequestHeader(line) Long userId, @PathVariable Long bookingId) {
+    public OutputBookingDto getBookingDto(@RequestHeader(LINE) Long userId, @PathVariable Long bookingId) {
         return bookingService.getBookingDto(bookingId, userId);
     }
 
     @GetMapping
-    public List<OutputBookingDto> getBookingUser(@RequestHeader(line) Long userId,
+    public List<OutputBookingDto> getBookingUser(@RequestHeader(LINE) Long userId,
                                                  @RequestParam(defaultValue = "ALL") String state) {
         return bookingService.getBookingBooker(State.getState(state), userId);
     }
 
     @GetMapping("/owner")
-    public List<OutputBookingDto> getBookingOwner(@RequestHeader(line) Long userId,
+    public List<OutputBookingDto> getBookingOwner(@RequestHeader(LINE) Long userId,
                                                   @RequestParam(defaultValue = "ALL") String state) {
         return bookingService.getBookingOwner(State.getState(state), userId);
     }
 
     @PostMapping
-    public OutputBookingDto create(@RequestHeader(line) long userId,
+    public OutputBookingDto create(@RequestHeader(LINE) long userId,
                                    @Valid @RequestBody InputBookingDto booking) {
         return bookingService.create(booking, userId);
     }
 
     @PatchMapping("/{bookingId}")
-    public OutputBookingDto update(@RequestHeader(line) Long userId,
+    public OutputBookingDto update(@RequestHeader(LINE) Long userId,
                                    @PathVariable Long bookingId,
                                    @RequestParam boolean approved) {
         return bookingService.updateBooking(bookingId, userId, approved);

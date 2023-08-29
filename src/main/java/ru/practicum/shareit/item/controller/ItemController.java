@@ -18,42 +18,42 @@ import java.util.Map;
 @RequiredArgsConstructor
 @RequestMapping("/items")
 public class ItemController {
-    private static final String line = "X-Sharer-User-Id";
+    private static final String LINE = "X-Sharer-User-Id";
     private final ItemService itemService;
 
     @GetMapping("/{itemId}")
-    public ItemDto getItem(@RequestHeader(line) long userId, @PathVariable long itemId) {
+    public ItemDto getItem(@RequestHeader(LINE) long userId, @PathVariable long itemId) {
         return itemService.getItemDtoById(itemId, userId);
     }
 
     @GetMapping
-    public List<ItemDto> getAll(@RequestHeader(line) long ownerId) {
+    public List<ItemDto> getAll(@RequestHeader(LINE) long ownerId) {
         return itemService.getAllUserItems(ownerId);
     }
 
     @PostMapping
-    public ItemDto create(@RequestHeader(line) long ownerId, @Valid @RequestBody ItemDto itemDto) {
+    public ItemDto create(@RequestHeader(LINE) long ownerId, @Valid @RequestBody ItemDto itemDto) {
         return itemService.add(ownerId, ItemMapper.toItem(itemDto));
     }
 
     @GetMapping("/search")
-    public List<ItemDto> searchItems(@RequestHeader(line) long userId, @RequestParam(name = "text") String text) {
+    public List<ItemDto> searchItems(@RequestHeader(LINE) long userId, @RequestParam(name = "text") String text) {
         return itemService.searchItems(userId, text);
     }
 
     @DeleteMapping("/{itemId}")
-    public void delete(@RequestHeader(line) long ownerId, @PathVariable long itemId) {
+    public void delete(@RequestHeader(LINE) long ownerId, @PathVariable long itemId) {
         itemService.delete(ownerId, itemId);
     }
 
     @PatchMapping("/{itemId}")
-    public ItemDto update(@RequestHeader(line) long ownerId, @PathVariable long itemId,
+    public ItemDto update(@RequestHeader(LINE) long ownerId, @PathVariable long itemId,
                           @RequestBody @NotNull Map<String, String> updates) {
         return itemService.update(ownerId, itemId, updates);
     }
 
     @PostMapping("/{itemId}/comment")
-    public CommentDto addComment(@RequestHeader(line) long userId, @PathVariable long itemId,
+    public CommentDto addComment(@RequestHeader(LINE) long userId, @PathVariable long itemId,
                                  @Valid @RequestBody CommentDto commentDto) {
         return itemService.addComment(userId, itemId, commentDto);
     }

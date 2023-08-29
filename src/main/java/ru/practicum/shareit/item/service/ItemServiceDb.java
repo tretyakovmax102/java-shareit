@@ -33,11 +33,13 @@ public class ItemServiceDb implements ItemService {
     private final BookingRepository bookingRepository;
     private final CommentRepository commentRepository;
 
+    @Transactional
     @Override
     public ItemDto add(Long ownerId, Item item) {
         User owner = userRepository.findById(ownerId)
                 .orElseThrow(() -> new NotFoundException("user nor found"));
         item.setOwner(owner);
+        log.info("ItemService: add implementation. User ID {}, item ID {}.", ownerId, item.getId());
         return ItemMapper.toItemDto(itemRepository.save(item));
     }
 
@@ -59,6 +61,7 @@ public class ItemServiceDb implements ItemService {
         if (updates.containsKey("available")) {
             item.setAvailable(Boolean.valueOf(updates.get("available")));
         }
+        log.info("ItemService: update implementation. User ID {}, itemId {}.", ownerId, itemId);
         return ItemMapper.toItemDto(itemRepository.save(item));
     }
 
@@ -68,6 +71,7 @@ public class ItemServiceDb implements ItemService {
         Item item = getItemById(itemId);
         User owner = item.getOwner();
         if (owner == null) throw new NotFoundException("owner item not found");
+        log.info("ItemService: getOwnerId implementation. owner ID {}.", itemId);
         return owner.getId();
     }
 
@@ -75,6 +79,7 @@ public class ItemServiceDb implements ItemService {
     @Transactional(readOnly = true)
     @Override
     public Item getItemById(Long itemId) {
+        log.info("ItemService: getItemById implementation. item ID {}.", itemId);
         return itemRepository.findById(itemId)
                 .orElseThrow(() -> new NotFoundException("item not found"));
     }
@@ -90,6 +95,7 @@ public class ItemServiceDb implements ItemService {
             setBookings(itemDto, bookingRepository.findAllByItemIdAndStatus(itemId, BookingStatus.APPROVED));
         }
         setComments(itemDto, comments);
+        log.info("ItemService: getItemDtoById implementation. User ID {}, item ID {}.", userId, itemId);
         return itemDto;
     }
 
@@ -107,6 +113,7 @@ public class ItemServiceDb implements ItemService {
             setBookings(i, bookings);
             setComments(i, comments);
         });
+        log.info("ItemService: getAllUserItems implementation. User ID {}.", userId);
         return listItemDto;
     }
 
@@ -117,14 +124,17 @@ public class ItemServiceDb implements ItemService {
         if (!getOwnerId(itemId).equals(ownerId)) {
             throw new NotFoundException("user not owner");
         }
+        log.info("ItemService: delete implementation. Item ID {}.", itemId);
         itemRepository.delete(item);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<ItemDto> searchItems(Long userId, String query) {
         if (query == null || query.isBlank()) {
             return Collections.emptyList();
         }
+        log.info("ItemService: searchItems implementation. User ID {}.", userId);
         return ItemMapper.toItemDtoList(itemRepository.searchAvailableItems(query));
     }
 
@@ -142,6 +152,7 @@ public class ItemServiceDb implements ItemService {
         comment.setItem(item);
         comment.setAuthor(user);
         comment.setCreated(LocalDateTime.now());
+        log.info("ItemService: addComment implementation. Item ID {}, User ID {} .", itemId, userId);
         return CommentMapper.toDto(commentRepository.save(comment));
     }
 

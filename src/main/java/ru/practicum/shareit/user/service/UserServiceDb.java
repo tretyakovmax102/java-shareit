@@ -20,7 +20,9 @@ public class UserServiceDb implements UserService {
     private final UserRepository userRepository;
 
     @Override
+    @Transactional
     public UserDto create(User user) {
+        log.info("UserService: create implementation. User ID {}.", user.getId());
         return UserMapper.toUserDto(userRepository.save(user));
     }
 
@@ -37,36 +39,42 @@ public class UserServiceDb implements UserService {
             user.setEmail(email);
         }
         userRepository.save(user);
+        log.info("UserService: update implementation. User ID {}.", user.getId());
         return UserMapper.toUserDto(getUser(id));
     }
 
     @Transactional(readOnly = true)
     @Override
     public User getUser(long id) {
+        log.info("UserService: findById implementation. User ID {}.", userRepository.findById(id));
         return userRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("User user"));
     }
 
     @Override
     public UserDto getUserDto(long id) {
+        log.info("UserService: getUserDto implementation. User ID {}.", userRepository.findById(id));
         return UserMapper.toUserDto(getUser(id));
     }
 
     @Transactional(readOnly = true)
     @Override
     public List<UserDto> getAll() {
+        log.info("UserService: getAll implementation");
         return UserMapper.toUserDtoList(userRepository.findAll());
     }
 
     @Transactional
     @Override
     public void delete(long userId) {
+        log.info("UserService: delete implementation. User ID {}.", userId);
         userRepository.deleteById(userId);
     }
 
     @Transactional
     @Override
     public void deleteAll() {
+        log.info("UserService: deleteAll implementation.");
         userRepository.deleteAll();
     }
 
