@@ -11,8 +11,8 @@ import javax.validation.constraints.PositiveOrZero;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/requests")
 @RequiredArgsConstructor
+@RequestMapping(path = "/requests")
 public class ItemRequestController {
     private final ItemRequestServiceInDb itemRequestService;
 

@@ -18,7 +18,6 @@ import ru.practicum.shareit.user.model.User;
 import ru.practicum.shareit.user.service.UserService;
 
 import java.time.LocalDateTime;
-import java.util.Comparator;
 import java.util.List;
 
 @Slf4j
@@ -79,18 +78,15 @@ public class BookingServiceImpl implements BookingService {
         return booking;
     }
 
-    @Transactional(readOnly = true)
     @Override
     public OutputBookingDto getBookingDto(Long bookingId, Long userId) {
-        Booking booking = getBooking(bookingId, userId);
         log.info("BookingService: getBookingDto implementation. User ID {}, booking ID {}.", userId, bookingId);
-        return BookingMapper.toOutputBookingDto(booking);
+        return BookingMapper.toOutputBookingDto(getBooking(bookingId, userId));
     }
 
     @Transactional(readOnly = true)
     @Override
     public List<OutputBookingDto> getBookingBooker(State state, Long bookerId, Long from, Long size) {
-        log.trace("start getBookingBooker..");
         userService.getUser(bookerId);
         Pageable pageable = Pagination.setPageable(from,size);
         List<Booking> bookings;
@@ -130,7 +126,7 @@ public class BookingServiceImpl implements BookingService {
                 log.info("BookingService: findBookingBooker implementation. User ID {}, state by default.",
                         bookerId);
         }
-        log.trace("getBookingBooker success");
+        log.info("getBookingBooker success");
         return BookingMapper.toOutputsBookingDtoList(bookings);
     }
 

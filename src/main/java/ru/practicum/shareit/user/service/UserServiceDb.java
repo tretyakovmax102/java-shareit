@@ -48,7 +48,7 @@ public class UserServiceDb implements UserService {
     public User getUser(long id) {
         log.info("UserService: findById implementation. User ID {}.", userRepository.findById(id));
         return userRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("User user"));
+                .orElseThrow(() -> new NotFoundException("user not found"));
     }
 
     @Override

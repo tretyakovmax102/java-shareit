@@ -5,7 +5,6 @@ import ru.practicum.shareit.item.dto.ItemDto;
 
 import java.time.LocalDateTime;
 
-@Generated
 @Getter
 @Setter
 @Builder

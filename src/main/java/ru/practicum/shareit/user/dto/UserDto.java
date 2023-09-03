@@ -6,7 +6,6 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-@Generated
 @Builder
 @Getter
 @Setter
@@ -17,7 +16,7 @@ public class UserDto {
     @Size(max = 50)
     private String name;
     @NotBlank
-    @Email(message = "incorrect email")
-    @Size(max = 256)
+    @Email(message = "incorect email")
+    @Size(max = 100)
     private String email;
 }

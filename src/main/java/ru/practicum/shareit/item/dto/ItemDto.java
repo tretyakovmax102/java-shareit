@@ -13,7 +13,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Generated
 public class ItemDto {
     private long id;
     @NotBlank

@@ -6,10 +6,10 @@ import ru.practicum.shareit.user.model.User;
 
 import javax.persistence.*;
 
-@ToString
 @Entity
 @Setter
 @Getter
+@ToString
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 import ru.practicum.shareit.booking.model.Booking;
 import ru.practicum.shareit.booking.model.BookingStatus;
 
-
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -21,6 +20,7 @@ public interface BookingRepository extends JpaRepository<Booking, Long> {
     void updateStatus(@Param("status") BookingStatus status, @Param("bookingId") Long bookingId);
 
     List<Booking> findAllByBookerIdOrderByStartDesc(@Param("bookerId") long bookerId, Pageable pageable);
+
     List<Booking> findAllByBookerIdAndStatus(long bookerId, BookingStatus status, Pageable pageable);
 
     List<Booking> findAllByBookerIdAndStartAfterOrderByStartDesc(long bookerId, LocalDateTime start, Pageable pageable);
@@ -28,7 +28,6 @@ public interface BookingRepository extends JpaRepository<Booking, Long> {
     List<Booking> findAllByBookerIdAndEndBeforeOrderByStartDesc(long bookerId, LocalDateTime end, Pageable pageable);
 
     List<Booking> findAllByItemIdAndStatus(long itemId, BookingStatus status, Pageable pageable);
-
 
     Optional<Booking> findFirstByItemIdAndBookerIdAndStatusAndEndBefore(long itemId, long bookerId,
                                                                         BookingStatus status, LocalDateTime end);
