@@ -1,6 +1,7 @@
 package ru.practicum.shareit.item.model;
 
 import lombok.experimental.UtilityClass;
+import ru.practicum.shareit.item.dto.CommentDto;
 
 import java.util.List;
 import java.util.stream.Collectors;

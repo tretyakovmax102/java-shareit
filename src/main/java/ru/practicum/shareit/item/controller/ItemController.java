@@ -4,12 +4,13 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.shareit.item.dto.ItemDto;
-import ru.practicum.shareit.item.model.CommentDto;
-import ru.practicum.shareit.item.model.ItemMapper;
+import ru.practicum.shareit.item.dto.CommentDto;
+import ru.practicum.shareit.item.dto.ItemDtoRequest;
 import ru.practicum.shareit.item.service.ItemService;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
 import java.util.List;
 import java.util.Map;
 
@@ -27,18 +28,22 @@ public class ItemController {
     }
 
     @GetMapping
-    public List<ItemDto> getAll(@RequestHeader(LINE) long ownerId) {
-        return itemService.getAllUserItems(ownerId);
+    public List<ItemDto> getAll(@RequestHeader(LINE) long ownerId,
+                                @RequestParam(value = "from", required = false) @PositiveOrZero Long from,
+                                @RequestParam(value = "size", required = false) @PositiveOrZero Long size) {
+        return itemService.getAllUserItems(ownerId, from, size);
     }
 
     @PostMapping
-    public ItemDto create(@RequestHeader(LINE) long ownerId, @Valid @RequestBody ItemDto itemDto) {
-        return itemService.add(ownerId, ItemMapper.toItem(itemDto));
+    public ItemDtoRequest create(@RequestHeader(LINE) long ownerId, @Valid @RequestBody ItemDtoRequest itemDto) {
+        return itemService.add(ownerId, itemDto);
     }
 
     @GetMapping("/search")
-    public List<ItemDto> searchItems(@RequestHeader(LINE) long userId, @RequestParam(name = "text") String text) {
-        return itemService.searchItems(userId, text);
+    public List<ItemDto> searchItems(@RequestHeader(LINE) long userId, @RequestParam(name = "text") String text,
+                                     @RequestParam(value = "from", required = false) @PositiveOrZero Long from,
+                                     @RequestParam(value = "size", required = false) @PositiveOrZero Long size) {
+        return itemService.searchItems(userId, text, from, size);
     }
 
     @DeleteMapping("/{itemId}")

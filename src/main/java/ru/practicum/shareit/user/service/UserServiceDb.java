@@ -71,11 +71,4 @@ public class UserServiceDb implements UserService {
         userRepository.deleteById(userId);
     }
 
-    @Transactional
-    @Override
-    public void deleteAll() {
-        log.info("UserService: deleteAll implementation.");
-        userRepository.deleteAll();
-    }
-
 }

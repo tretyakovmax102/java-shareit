@@ -7,6 +7,7 @@ import ru.practicum.shareit.user.model.User;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Generated
 @Getter
 @Setter
 @Entity
@@ -31,4 +32,12 @@ public class Booking {
     private User booker;
     @Enumerated(EnumType.STRING)
     private BookingStatus status;
+
+    public Booking(Item item, User booker, LocalDateTime start, LocalDateTime end, BookingStatus status) {
+        this.start = start;
+        this.end = end;
+        this.item = item;
+        this.booker = booker;
+        this.status = status;
+    }
 }

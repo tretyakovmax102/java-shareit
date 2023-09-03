@@ -1,5 +1,6 @@
 package ru.practicum.shareit.item.repository;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -15,7 +16,5 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
             "WHERE LOWER(i.name) LIKE LOWER(concat('%',?1,'%')) "
             + " OR LOWER(i.description) LIKE LOWER(concat('%',?1,'%'))"
             + " AND i.available = TRUE")
-    List<Item> searchAvailableItems(String text);
-
-    void deleteById(long itemId);
+    List<Item> searchAvailableItems(String text, Pageable pageable);
 }
