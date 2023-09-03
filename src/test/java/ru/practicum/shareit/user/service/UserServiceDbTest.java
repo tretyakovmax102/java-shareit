@@ -14,6 +14,7 @@ import ru.practicum.shareit.user.model.UserMapper;
 import ru.practicum.shareit.user.repository.UserRepository;
 
 import java.util.*;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
@@ -34,6 +35,7 @@ class UserServiceDbTest {
                 .name("user1")
                 .email("user1@mail.ru")
                 .build();
+
         when(userRepository.findById(userDto.getId()))
                 .thenReturn(Optional.of(UserMapper.fromUser(userDto)));
         when(userRepository.save(any(User.class)))
@@ -44,9 +46,11 @@ class UserServiceDbTest {
         assertEquals(user.getId(),userDto.getId());
         assertEquals(user.getName(),userDto.getName());
         assertEquals(user.getEmail(),userDto.getEmail());
+
         assertThrows(NotFoundException.class,() -> userService.getUser(-10L));
         assertThrows(NotFoundException.class,() -> userService.getUser(0L));
         assertThrows(NotFoundException.class, () -> userService.getUser(2L));
+
         verify(userRepository,times(1)).save(Mockito.any(User.class));
         verify(userRepository,times(5)).findById(Mockito.anyLong());
     }
