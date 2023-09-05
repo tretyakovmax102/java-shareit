@@ -4,7 +4,6 @@ import org.jeasy.random.EasyRandom;
 import org.junit.jupiter.api.Test;
 import ru.practicum.shareit.request.dto.ItemRequestDto;
 import ru.practicum.shareit.user.model.User;
-import ru.practicum.shareit.user.model.UserMapper;
 
 import java.util.List;
 
