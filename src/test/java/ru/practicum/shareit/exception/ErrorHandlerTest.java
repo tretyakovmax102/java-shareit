@@ -10,36 +10,36 @@ class ErrorHandlerTest {
     private ErrorHandler errorHandler;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         errorHandler = new ErrorHandler();
     }
 
     @Test
-    void handleExceptionForUnsupportTest() {
+    void testHandleExceptionForUnsuppor() {
         ErrorResponse response = errorHandler.handleExceptionForUnsupport(new ExceptionForUnsupport("ExceptionForUnsupport"));
         assertEquals(response.getError(),"ExceptionForUnsupport");
     }
 
     @Test
-    void handleNotFoundExceptionTest() {
+    void testHandleNotFoundException() {
         ErrorResponse response = errorHandler.handleNotFoundException(new NotFoundException("NotFoundException"));
         assertEquals(response.getError(),"NotFoundException: NotFoundException");
     }
 
     @Test
-    void handleValidationException() {
+    void testHandleValidationException() {
         ErrorResponse response = errorHandler.handleValidationException(new ValidationException("ValidationException"));
         assertEquals(response.getError(),"ValidationException: ValidationException");
     }
 
     @Test
-    void handleForbiddenExceptionTest() {
+    void testHandleForbiddenException() {
         ErrorResponse response = errorHandler.handleForbiddenException(new ForbiddenException("ForbiddenException"));
         assertEquals(response.getError(),"ForbiddenException: ForbiddenException");
     }
 
     @Test
-    void handleThrowableTest() {
+    void testHandleThrowable() {
         ErrorResponse response = errorHandler.handleThrowable(new Throwable("Throwable"));
         assertEquals(response.getError(),"Throwable");
     }

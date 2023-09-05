@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class PaginationTest {
 
     @Test
-    public void setPageableTest() {
+    void testSetPageable() {
         assertThrows(ValidationException.class, () -> Pagination.setPageable(-10L,0L));
         assertThrows(ValidationException.class, () -> Pagination.setPageable(0L,-10L));
         assertThrows(ValidationException.class, () -> Pagination.setPageable(-10L,-10L));

@@ -27,7 +27,7 @@ class ItemRequestServiceInDbIntegrationTest {
 
     @Test
     @DirtiesContext
-    void newItemRequestAndGetTest() {
+    void testNewItemRequestAndGet() {
         User user2 = UserMapper.fromUser(userService.create(User.builder()
                 .name("name2")
                 .email("name2@mail.com")

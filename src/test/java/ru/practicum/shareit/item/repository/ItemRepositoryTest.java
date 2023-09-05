@@ -24,7 +24,7 @@ class ItemRepositoryTest {
 
     @Test
     @DirtiesContext
-    void findAllByOwnerIdTest() {
+    void testFindAllByOwnerId() {
         userRepository.save(new User(1L,"user1","user1@mail.ru"));
         userRepository.save(new User(2L,"user2","user2@mail.ru"));
 
@@ -56,7 +56,7 @@ class ItemRepositoryTest {
 
     @Test
     @DirtiesContext
-    void searchAvailableItemsTest() {
+    void testSearchAvailableItems() {
         userRepository.save(new User(1L,"user1","user1@mail.ru"));
 
         Item item1 = new Item(1L,"item1","description",true);

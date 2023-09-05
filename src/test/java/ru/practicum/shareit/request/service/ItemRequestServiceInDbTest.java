@@ -47,7 +47,7 @@ class ItemRequestServiceInDbTest {
 
 
     @Test
-    void newItemRequestAndGetTest() {
+    void testNewItemRequestAndGet() {
         ItemRequestDto itemRequestDto = ItemRequestDto.builder()
                 .id(1L)
                 .description("description1")

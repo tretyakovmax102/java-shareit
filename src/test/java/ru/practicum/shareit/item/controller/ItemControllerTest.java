@@ -52,7 +52,7 @@ class ItemControllerTest {
     }
 
     @Test
-    void createTest() throws Exception {
+    void testCreate() throws Exception {
         when(itemService.add(anyLong(), any(ItemDtoRequest.class)))
                 .thenReturn(itemDtoRequest);
 
@@ -69,7 +69,7 @@ class ItemControllerTest {
     }
 
     @Test
-    void getAllTest() throws Exception {
+    void testGetAll() throws Exception {
         when(itemService.getAllUserItems(anyLong(), anyLong(), anyLong()))
                 .thenReturn(List.of(itemDto));
 
@@ -85,7 +85,7 @@ class ItemControllerTest {
     }
 
     @Test
-    void update() throws Exception {
+    void testUpdate() throws Exception {
         when(itemService.update(anyLong(), anyLong(), any(Map.class)))
                 .thenReturn(itemDto);
 
@@ -102,7 +102,7 @@ class ItemControllerTest {
     }
 
     @Test
-    void addCommentTest() throws Exception {
+    void testAddComment() throws Exception {
         CommentDto commentDto = CommentDto.builder()
                 .id(1L)
                 .text("Коммент")

@@ -14,7 +14,7 @@ class ItemRequestMapperTest {
     private final EasyRandom generator = new EasyRandom();
 
     @Test
-    void toRequestDto() {
+    void testToRequestDto() {
         ItemRequest itemRequest = generator.nextObject(ItemRequest.class);
         ItemRequestDto itemRequestDto = ItemRequestMapper.toDto(itemRequest);
         assertEquals(itemRequestDto.getItems().size(), itemRequest.getItems().size());
@@ -24,7 +24,7 @@ class ItemRequestMapperTest {
     }
 
     @Test
-    void toItemRequestDtoList() {
+    void testToItemRequestDtoList() {
         ItemRequest itemRequest1 = generator.nextObject(ItemRequest.class);
         ItemRequest itemRequest2 = generator.nextObject(ItemRequest.class);
         UserMapper userMapper = new UserMapper();
@@ -42,7 +42,7 @@ class ItemRequestMapperTest {
     }
 
     @Test
-    void toItemRequest() {
+    void testToItemRequest() {
         ItemRequestDto itemRequestDto = generator.nextObject(ItemRequestDto.class);
         ItemRequest itemRequest = ItemRequestMapper.fromDto(itemRequestDto, generator.nextObject(User.class));
         assertEquals(itemRequestDto.getDescription(), itemRequest.getDescription());

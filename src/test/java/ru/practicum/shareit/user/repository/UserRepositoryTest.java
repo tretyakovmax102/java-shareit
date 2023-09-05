@@ -17,7 +17,7 @@ class UserRepositoryTest {
 
     @Test
     @DirtiesContext
-    void findByIdNotTest() {
+    void testFindByIdNot() {
         User user1 = generator.nextObject(User.class);
         User user2 = generator.nextObject(User.class);
         User user3 = generator.nextObject(User.class);

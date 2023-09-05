@@ -22,7 +22,7 @@ class UserServiceDbIntegrationTest {
 
     @Test
     @DirtiesContext
-    public void createAndGetTest() {
+    void testCreateAndGet() {
         assertThrows(NotFoundException.class, () -> userService.getUser(0L));
         assertThrows(NotFoundException.class, () -> userService.getUser(-10L));
         assertThrows(NotFoundException.class, () -> userService.getUser(10L));
@@ -40,7 +40,7 @@ class UserServiceDbIntegrationTest {
 
     @Test
     @DirtiesContext
-    public void getAllUsersAndDeleteTest() {
+    void testGetAllUsersAndDelete() {
         List<UserDto> emptyUserList = userService.getAll();
         assertTrue(emptyUserList.isEmpty());
 
@@ -84,7 +84,7 @@ class UserServiceDbIntegrationTest {
 
     @Test
     @DirtiesContext
-    public void updateUserTest() {
+    void testUpdateUser() {
         User user = User.builder()
                 .name("user1")
                 .email("user1@mail.ru")

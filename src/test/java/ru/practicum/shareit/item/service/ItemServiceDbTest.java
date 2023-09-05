@@ -53,7 +53,7 @@ class ItemServiceDbTest {
     ItemRequestServiceInDb itemRequestService;
 
     @Test
-    public void createAndGetItemTest() {
+    void testCreateAndGetItem() {
         assertThrows(NotFoundException.class, () -> itemService.getItemDtoById(10L,1L));
         assertThrows(NotFoundException.class, () -> itemService.getItemDtoById(0L,1L));
         assertThrows(NotFoundException.class, () -> itemService.getItemById(1L));
@@ -86,7 +86,7 @@ class ItemServiceDbTest {
     }
 
     @Test
-    public void updateAndSearchAndDeleteItemTest() {
+    void testUpdateAndSearchAndDeleteItem() {
         User user1 = new User(1L,"user1","user1@mail.ru");
 
 
@@ -138,7 +138,7 @@ class ItemServiceDbTest {
     }
 
     @Test
-    public void commentTest() {
+    void testComment() {
         CommentDto comment = new CommentDto();
         comment.setText("text");
         Long userId = 1L;
@@ -159,7 +159,7 @@ class ItemServiceDbTest {
     }
 
     @Test
-    public void getAllItemUsersTest() {
+    void testGetAllItemUsers() {
         User user1 = new User(1L,"user1","user1@mail.ru");
         User user2 = new User(2L,"user2","user2@mail.ru");
 

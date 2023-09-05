@@ -38,7 +38,7 @@ class UserControllerTest {
     ObjectMapper mapper;
 
     @Test
-    public void createTest() throws Exception {
+    void testCreate() throws Exception {
         UserDto userDto = UserDto.builder()
                 .name("user1")
                 .email("user1@mail.ru")
@@ -61,7 +61,7 @@ class UserControllerTest {
     }
 
     @Test
-    public void getUserTest() throws Exception {
+    void testGetUser() throws Exception {
 
         when(userService.getUser(anyLong()))
                 .thenReturn(new User(1L,"name","email@mail.com"));
@@ -72,7 +72,7 @@ class UserControllerTest {
     }
 
     @Test
-    public void getAllUsersTest() throws Exception {
+    void testGetAllUsers() throws Exception {
 
         when(userService.getAll())
                 .thenReturn(List.of(new UserDto(1L,"name1","email1@mail.com"),
@@ -86,7 +86,7 @@ class UserControllerTest {
     }
 
     @Test
-    public void updateUserTest() throws Exception {
+    void testUpdateUserTes() throws Exception {
         User user = User.builder()
                 .id(1L)
                 .name("nameUpd")
@@ -108,8 +108,7 @@ class UserControllerTest {
     }
 
     @Test
-    public void deleteUserTest() throws Exception {
-
+    void testDeleteUser() throws Exception {
         mvc.perform(delete("/users/1")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)

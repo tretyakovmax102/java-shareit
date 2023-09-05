@@ -41,7 +41,7 @@ class BookingControllerTest {
     ObjectMapper mapper;
 
     @Test
-    void getBookingDtoTest() throws Exception {
+    void testGetBookingDto() throws Exception {
         OutputBookingDto outputBookingDto = new OutputBookingDto(1L, LocalDateTime.now(),
                 LocalDateTime.of(2022, 2, 2,0, 0,0).plusDays(1),
                 new ItemDto(), new UserDto(1, "name", "desk"), BookingStatus.WAITING);

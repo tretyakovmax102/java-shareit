@@ -38,7 +38,7 @@ class ItemRequestControllerTest {
     ObjectMapper mapper;
 
     @Test
-    public void newItemRequestTest() throws  Exception {
+    void testNewItemRequest() throws  Exception {
 
         ItemRequestDto itemRequestDto = ItemRequestDto.builder()
                 .id(1L)
@@ -61,7 +61,7 @@ class ItemRequestControllerTest {
     }
 
     @Test
-    public void getOwnItemRequestTest() throws Exception {
+    void testGetOwnItemRequest() throws Exception {
         when(itemRequestService.getOwnItemRequest(anyLong()))
                 .thenAnswer(u -> {
                     ItemRequest request1 = new ItemRequest(1L,"description1",new User(),
@@ -80,7 +80,7 @@ class ItemRequestControllerTest {
     }
 
     @Test
-    public void getAllItemRequestTest() throws Exception {
+    void testGetAllItemRequest() throws Exception {
         when(itemRequestService.getAllItemRequest(anyLong(),anyLong(),anyLong()))
                 .thenAnswer(u -> {
                     ItemRequest request1 = new ItemRequest(1L,"description1",new User(),
@@ -101,7 +101,7 @@ class ItemRequestControllerTest {
     }
 
     @Test
-    public void getItemRequestTest() throws Exception {
+    void testGetItemRequest() throws Exception {
         when(itemRequestService.getItemRequest(anyLong(), anyLong()))
                 .thenReturn(new ItemRequest(1L,"description",new User(),
                         LocalDateTime.now(),new ArrayList<>()));

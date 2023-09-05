@@ -13,7 +13,7 @@ class BookingMapperTest {
     private final EasyRandom generator = new EasyRandom();
 
     @Test
-    void toBookingDtoTest() {
+    void testToBookingDto() {
         Booking booking = generator.nextObject(Booking.class);
         BookingDto bookingDto = BookingMapper.toBookingDto(booking);
         assertEquals(booking.getId(), bookingDto.getId());
@@ -24,7 +24,7 @@ class BookingMapperTest {
     }
 
     @Test
-    void toOutputBookingDtoTest() {
+    void testToOutputBookingDto() {
         Booking booking = generator.nextObject(Booking.class);
         OutputBookingDto bookingDto = BookingMapper.toOutputBookingDto(booking);
         assertEquals(booking.getId(), bookingDto.getId());
@@ -35,7 +35,7 @@ class BookingMapperTest {
     }
 
     @Test
-    void toOutputsBookingDtoListTest() {
+    void testToOutputsBookingDtoList() {
         Booking booking1 = generator.nextObject(Booking.class);
         Booking booking2 = generator.nextObject(Booking.class);
         List<OutputBookingDto> bookingDtoList = BookingMapper.toOutputsBookingDtoList(List.of(booking1, booking2));

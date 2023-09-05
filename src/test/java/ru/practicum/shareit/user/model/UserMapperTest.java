@@ -13,7 +13,7 @@ class UserMapperTest {
     private final EasyRandom generator = new EasyRandom();
 
     @Test
-    void toUserDto() {
+    void testToUserDto() {
         User user = generator.nextObject(User.class);
         UserDto userDto = UserMapper.toUserDto(user);
         assertEquals(userDto.getId(), user.getId());
@@ -22,7 +22,7 @@ class UserMapperTest {
     }
 
     @Test
-    void toUserDtoList() {
+    void testToUserDtoList() {
         User user1 = generator.nextObject(User.class);
         User user2 = generator.nextObject(User.class);
         List<User> users = List.of(user1, user2);
@@ -36,7 +36,7 @@ class UserMapperTest {
     }
 
     @Test
-    void fromUser() {
+    void testFromUser() {
         UserDto userDto = generator.nextObject(UserDto.class);
         User user = UserMapper.fromUser(userDto);
         assertEquals(userDto.getId(), user.getId());

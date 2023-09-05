@@ -27,7 +27,7 @@ class ItemRequestRepositoryTest {
 
     @Test
     @DirtiesContext
-    void findALlByRequesterInOrderByCreatedAscTest() {
+    void testFindALlByRequesterInOrderByCreatedAsc() {
         List<User> users = new ArrayList<>();
         User user1 = userRepository.save(generator.nextObject(User.class));
         User user2 = userRepository.save(generator.nextObject(User.class));
@@ -57,7 +57,7 @@ class ItemRequestRepositoryTest {
 
     @Test
     @DirtiesContext
-    void findByRequester_IdOrderByCreatedAscTest() {
+    void testFindByRequester_IdOrderByCreatedAsc() {
         List<User> users = new ArrayList<>();
         User user1 = userRepository.save(generator.nextObject(User.class));
         User user2 = userRepository.save(generator.nextObject(User.class));

@@ -13,7 +13,7 @@ class ItemMapperTest {
     private final EasyRandom generator = new EasyRandom();
 
     @Test
-    void toItemDtoTest() {
+    void testToItemDto() {
         Item item = generator.nextObject(Item.class);
         ItemDto itemDto = ItemMapper.toItemDto(item);
         assertEquals(item.getId(), itemDto.getId());
@@ -23,7 +23,7 @@ class ItemMapperTest {
     }
 
     @Test
-    void toItemDtoRequestTest() {
+    void testToItemDtoRequest() {
         Item item = generator.nextObject(Item.class);
         ItemDtoRequest itemDtoRequest = ItemMapper.toItemDtoRequest(item);
         assertEquals(item.getId(), itemDtoRequest.getId());
@@ -34,7 +34,7 @@ class ItemMapperTest {
     }
 
     @Test
-    void toItemDtoRequestListTest() {
+    void testToItemDtoRequestList() {
         Item item1 = generator.nextObject(Item.class);
         Item item2 = generator.nextObject(Item.class);
         List<ItemDtoRequest> itemDtoRequestList = ItemMapper.toItemDtoRequestList(List.of(item1, item2));
@@ -51,7 +51,7 @@ class ItemMapperTest {
     }
 
     @Test
-    void toItemTest() {
+    void testToItem() {
         ItemDto itemDto = generator.nextObject(ItemDto.class);
         Item item = ItemMapper.toItem(itemDto);
         assertEquals(itemDto.getId(), item.getId());
@@ -61,7 +61,7 @@ class ItemMapperTest {
     }
 
     @Test
-    void toItemDtoListTest() {
+    void testToItemDtoList() {
         Item item1 = generator.nextObject(Item.class);
         Item item2 = generator.nextObject(Item.class);
         List<ItemDto> itemDtoList = ItemMapper.toItemDtoList(List.of(item1, item2));

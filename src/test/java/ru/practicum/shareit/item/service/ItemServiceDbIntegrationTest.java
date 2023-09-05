@@ -25,7 +25,7 @@ class ItemServiceDbIntegrationTest {
 
     @Test
     @DirtiesContext
-    public void createItemAndGetTest() {
+    void testCreateItemAndGet() {
         UserDto user = userService.create(User.builder()
                 .name("nameUser")
                 .email("nameUser@mail.com")

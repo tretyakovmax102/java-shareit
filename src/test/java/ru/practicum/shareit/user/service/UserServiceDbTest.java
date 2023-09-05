@@ -29,7 +29,7 @@ class UserServiceDbTest {
 
     @Test
     @DirtiesContext
-    public void createAndGetTest() {
+    void testCreateAndGet() {
         UserDto userDto = UserDto.builder()
                 .id(1L)
                 .name("user1")
@@ -57,7 +57,7 @@ class UserServiceDbTest {
 
     @Test
     @DirtiesContext
-    public void getAllUsersAndDeleteTest() {
+    void testGetAllUsersAndDelete() {
         when(userRepository.findAll())
                 .thenReturn(new ArrayList<>());
         List<UserDto> emptyUserList = userService.getAll();
@@ -98,7 +98,7 @@ class UserServiceDbTest {
 
     @Test
     @DirtiesContext
-    public void updateUserTest() {
+    void testUpdateUserTest() {
         UserDto userDto = UserDto.builder()
                 .id(1L)
                 .name("user1")

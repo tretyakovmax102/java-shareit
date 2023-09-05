@@ -31,7 +31,7 @@ class BookingServiceImplIntegrationTest {
 
     @Test
     @DirtiesContext
-    public void createUpdateGetTest() {
+    void testCreateUpdateGet() {
         UserDto user1 = userService.create(User.builder()
                 .name("name1")
                 .email("name1@mail.com")

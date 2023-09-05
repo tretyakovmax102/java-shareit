@@ -13,7 +13,7 @@ class CommentMapperTest {
     private final EasyRandom generator = new EasyRandom();
 
     @Test
-    void toDto() {
+    void testToDto() {
         Comment comment = generator.nextObject(Comment.class);
         CommentDto commentDto = CommentMapper.toDto(comment);
         assertEquals(comment.getId(), commentDto.getId());
@@ -21,7 +21,7 @@ class CommentMapperTest {
     }
 
     @Test
-    void toDtoList() {
+    void testToDtoList() {
         Comment comment1 = generator.nextObject(Comment.class);
         Comment comment2 = generator.nextObject(Comment.class);
         List<CommentDto> commentDtoList = CommentMapper.toDtoList(List.of(comment1, comment2));

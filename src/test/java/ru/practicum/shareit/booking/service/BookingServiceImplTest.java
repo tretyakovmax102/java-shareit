@@ -42,7 +42,7 @@ class BookingServiceImplTest {
 
 
     @Test
-    void createGetTest() {
+    void testCreateGet() {
         InputBookingDto booking = InputBookingDto.builder()
                 .start(date.plusDays(1))
                 .end(date.plusDays(2))
@@ -84,7 +84,7 @@ class BookingServiceImplTest {
     }
 
     @Test
-    void getBookingBookerTest() {
+    void testGetBookingBooker() {
         when(userService.getUser(anyLong()))
                 .thenReturn(null);
         when(bookingRepository.findAllByBookerIdAndStatus(anyLong(), any(BookingStatus.class), any(Pageable.class)))
@@ -141,7 +141,7 @@ class BookingServiceImplTest {
     }
 
     @Test
-    void getBookingOwnerTest() {
+    void testGetBookingOwner() {
         when(userService.getUser(anyLong()))
                 .thenReturn(null);
         when(bookingRepository.findAllByOwnerIdAndStatus(anyLong(), any(BookingStatus.class), any(Pageable.class)))

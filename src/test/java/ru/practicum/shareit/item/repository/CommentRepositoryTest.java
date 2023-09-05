@@ -62,7 +62,7 @@ class CommentRepositoryTest {
 
     @Test
     @DirtiesContext
-    public void findAllByItemIdInTest() {
+    void testFindAllByItemIdIn() {
         User user1 = new User(1L,"user1","user1@mail.ru");
         userRepository.save(user1);
         User user2 = new User(2L,"user2","user2@mail.ru");
