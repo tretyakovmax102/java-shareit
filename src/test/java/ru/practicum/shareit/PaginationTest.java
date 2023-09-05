@@ -22,11 +22,11 @@ class PaginationTest {
         assertThrows(ValidationException.class, () -> Pagination.setPageable(5L,-10L));
 
         Pageable pageable1 = Pagination.setPageable(1L,1L);
-        assertEquals(pageable1.getPageNumber(),1);
-        assertEquals(pageable1.getPageSize(),1);
+        assertEquals(1, pageable1.getPageNumber());
+        assertEquals(1, pageable1.getPageSize());
 
         Pageable pageable2 = Pagination.setPageable(4L,3L);
-        assertEquals(pageable2.getPageNumber(),1);
-        assertEquals(pageable2.getPageSize(),3);
+        assertEquals(1, pageable2.getPageNumber());
+        assertEquals(3,pageable2.getPageSize());
     }
 }

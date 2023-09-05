@@ -25,7 +25,7 @@ class CommentMapperTest {
         Comment comment1 = generator.nextObject(Comment.class);
         Comment comment2 = generator.nextObject(Comment.class);
         List<CommentDto> commentDtoList = CommentMapper.toDtoList(List.of(comment1, comment2));
-        assertEquals(comment1.getId(), commentDtoList.get(0).getId());
-        assertEquals(comment2.getId(), commentDtoList.get(1).getId());
+        assertEquals(commentDtoList.get(0).getId(), comment1.getId());
+        assertEquals(commentDtoList.get(1).getId(), comment2.getId());
     }
 }

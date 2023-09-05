@@ -27,18 +27,16 @@ class ItemRequestMapperTest {
     void testToItemRequestDtoList() {
         ItemRequest itemRequest1 = generator.nextObject(ItemRequest.class);
         ItemRequest itemRequest2 = generator.nextObject(ItemRequest.class);
-        UserMapper userMapper = new UserMapper();
-        ItemRequestMapper itemRequestMapper = new ItemRequestMapper();
         List<ItemRequest> itemRequests = List.of(itemRequest1, itemRequest2);
         List<ItemRequestDto> itemRequestDtos = ItemRequestMapper.toDtoList(itemRequests);
-        assertEquals(itemRequest1.getItems().size(), itemRequestDtos.get(0).getItems().size());
-        assertEquals(itemRequest1.getDescription(), itemRequestDtos.get(0).getDescription());
-        assertEquals(itemRequest1.getCreated(), itemRequestDtos.get(0).getCreated());
-        assertEquals(itemRequest1.getId(), itemRequestDtos.get(0).getId());
-        assertEquals(itemRequest2.getItems().size(), itemRequestDtos.get(1).getItems().size());
-        assertEquals(itemRequest2.getDescription(), itemRequestDtos.get(1).getDescription());
-        assertEquals(itemRequest2.getCreated(), itemRequestDtos.get(1).getCreated());
-        assertEquals(itemRequest2.getId(), itemRequestDtos.get(1).getId());
+        assertEquals(itemRequestDtos.get(0).getItems().size(), itemRequest1.getItems().size());
+        assertEquals(itemRequestDtos.get(0).getDescription(), itemRequest1.getDescription());
+        assertEquals(itemRequestDtos.get(0).getCreated(),itemRequest1.getCreated());
+        assertEquals(itemRequestDtos.get(0).getId(), itemRequest1.getId());
+        assertEquals(itemRequestDtos.get(1).getItems().size(), itemRequest2.getItems().size());
+        assertEquals(itemRequestDtos.get(1).getDescription(), itemRequest2.getDescription());
+        assertEquals(itemRequestDtos.get(1).getCreated(), itemRequest2.getCreated());
+        assertEquals(itemRequestDtos.get(1).getId(), itemRequest2.getId());
     }
 
     @Test

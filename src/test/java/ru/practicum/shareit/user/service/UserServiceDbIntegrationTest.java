@@ -65,17 +65,17 @@ class UserServiceDbIntegrationTest {
 
         List<UserDto> userList = userService.getAll();
         assertEquals(userList.size(),3);
-        assertEquals(userList.get(0).getId(),userService.getUser(1L).getId());
-        assertEquals(userList.get(0).getName(),userService.getUser(1L).getName());
-        assertEquals(userList.get(0).getEmail(),userService.getUser(1L).getEmail());
+        assertEquals(userService.getUser(1L).getId(), userList.get(0).getId());
+        assertEquals(userService.getUser(1L).getName(), userList.get(0).getName());
+        assertEquals(userService.getUser(1L).getEmail(), userList.get(0).getEmail());
 
-        assertEquals(userList.get(1).getId(),userService.getUser(2L).getId());
-        assertEquals(userList.get(1).getName(),userService.getUser(2L).getName());
-        assertEquals(userList.get(1).getEmail(),userService.getUser(2L).getEmail());
+        assertEquals(userService.getUser(2L).getId(), userList.get(1).getId());
+        assertEquals(userService.getUser(2L).getName(), userList.get(1).getName());
+        assertEquals(userService.getUser(2L).getEmail(), userList.get(1).getEmail());
 
-        assertEquals(userList.get(2).getId(),userService.getUser(3L).getId());
-        assertEquals(userList.get(2).getName(),userService.getUser(3L).getName());
-        assertEquals(userList.get(2).getEmail(),userService.getUser(3L).getEmail());
+        assertEquals(userService.getUser(3L).getId(), userList.get(2).getId());
+        assertEquals(userService.getUser(3L).getName(), userList.get(2).getName());
+        assertEquals(userService.getUser(3L).getEmail(), userList.get(2).getEmail());
 
         userService.delete(1L);
         assertThrows(NotFoundException.class, () -> userService.getUser(1L));
@@ -96,8 +96,8 @@ class UserServiceDbIntegrationTest {
         update.put("email", "updateEmail@user.ru");
         userService.update(1L, update);
         user = userService.getUser(user.getId());
-        assertEquals(user.getName(),update.get("name"));
-        assertEquals(user.getEmail(),update.get("email"));
+        assertEquals(update.get("name"), user.getName());
+        assertEquals(update.get("email"), user.getEmail());
         assertThrows(NotFoundException.class,() -> userService.update(0L, update));
     }
 

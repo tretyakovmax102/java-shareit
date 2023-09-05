@@ -38,16 +38,16 @@ class ItemMapperTest {
         Item item1 = generator.nextObject(Item.class);
         Item item2 = generator.nextObject(Item.class);
         List<ItemDtoRequest> itemDtoRequestList = ItemMapper.toItemDtoRequestList(List.of(item1, item2));
-        assertEquals(item1.getId(), itemDtoRequestList.get(0).getId());
-        assertEquals(item1.getName(), itemDtoRequestList.get(0).getName());
-        assertEquals(item1.getDescription(), itemDtoRequestList.get(0).getDescription());
-        assertEquals(item1.getAvailable(), itemDtoRequestList.get(0).getAvailable());
-        assertEquals(item1.getRequest().getId(), itemDtoRequestList.get(0).getRequestId());
-        assertEquals(item2.getId(), itemDtoRequestList.get(1).getId());
-        assertEquals(item2.getName(), itemDtoRequestList.get(1).getName());
-        assertEquals(item2.getDescription(), itemDtoRequestList.get(1).getDescription());
-        assertEquals(item2.getAvailable(), itemDtoRequestList.get(1).getAvailable());
-        assertEquals(item2.getRequest().getId(), itemDtoRequestList.get(1).getRequestId());
+        assertEquals(itemDtoRequestList.get(0).getId(), item1.getId());
+        assertEquals(itemDtoRequestList.get(0).getName(), item1.getName());
+        assertEquals(itemDtoRequestList.get(0).getDescription(), item1.getDescription());
+        assertEquals(itemDtoRequestList.get(0).getAvailable(), item1.getAvailable());
+        assertEquals(itemDtoRequestList.get(0).getRequestId(), item1.getRequest().getId());
+        assertEquals(itemDtoRequestList.get(1).getId(), item2.getId());
+        assertEquals(itemDtoRequestList.get(1).getName(), item2.getName());
+        assertEquals(itemDtoRequestList.get(1).getDescription(), item2.getDescription());
+        assertEquals(itemDtoRequestList.get(1).getAvailable(), item2.getAvailable());
+        assertEquals(itemDtoRequestList.get(1).getRequestId(), item2.getRequest().getId());
     }
 
     @Test
@@ -65,13 +65,13 @@ class ItemMapperTest {
         Item item1 = generator.nextObject(Item.class);
         Item item2 = generator.nextObject(Item.class);
         List<ItemDto> itemDtoList = ItemMapper.toItemDtoList(List.of(item1, item2));
-        assertEquals(item1.getId(), itemDtoList.get(0).getId());
-        assertEquals(item1.getName(), itemDtoList.get(0).getName());
-        assertEquals(item1.getDescription(), itemDtoList.get(0).getDescription());
-        assertEquals(item1.getAvailable(), itemDtoList.get(0).getAvailable());
-        assertEquals(item2.getId(), itemDtoList.get(1).getId());
-        assertEquals(item2.getName(), itemDtoList.get(1).getName());
-        assertEquals(item2.getDescription(), itemDtoList.get(1).getDescription());
-        assertEquals(item2.getAvailable(), itemDtoList.get(1).getAvailable());
+        assertEquals(itemDtoList.get(0).getId(), item1.getId());
+        assertEquals(itemDtoList.get(0).getName(), item1.getName());
+        assertEquals(itemDtoList.get(0).getDescription(), item1.getDescription());
+        assertEquals(itemDtoList.get(0).getAvailable(), item1.getAvailable());
+        assertEquals(itemDtoList.get(1).getId(), item2.getId());
+        assertEquals(itemDtoList.get(1).getName(), item2.getName());
+        assertEquals(itemDtoList.get(1).getDescription(), item2.getDescription());
+        assertEquals(itemDtoList.get(1).getAvailable(), item2.getAvailable());
     }
 }

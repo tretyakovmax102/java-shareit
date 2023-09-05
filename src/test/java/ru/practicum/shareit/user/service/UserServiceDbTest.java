@@ -118,8 +118,8 @@ class UserServiceDbTest {
         update.put("name", userDtoUpdate.getName());
         update.put("email", userDtoUpdate.getEmail());
         UserDto user = userService.update(userDtoUpdate.getId(),update);
-        assertEquals(user.getName(),"user1Update");
-        assertEquals(user.getEmail(),"user1Update@mail.ru");
+        assertEquals("user1Update", user.getName());
+        assertEquals("user1Update@mail.ru", user.getEmail());
         assertThrows(NotFoundException.class,() -> userService.update(-10L, any(Map.class)));
         assertThrows(NotFoundException.class,() -> userService.update(0L, any(Map.class)));
     }
