@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 @Setter
 @ValidateDate
 public class BookingDto {
+
     private Long id;
     @FutureOrPresent(message = "start exception")
     private LocalDateTime start;
