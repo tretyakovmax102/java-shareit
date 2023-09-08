@@ -17,8 +17,10 @@ import ru.practicum.shareit.exception.NotFoundException;
 import ru.practicum.shareit.exception.ValidationException;
 import ru.practicum.shareit.item.model.Item;
 import ru.practicum.shareit.item.repository.ItemRepository;
+import ru.practicum.shareit.item.service.ItemService;
 import ru.practicum.shareit.user.model.User;
 import ru.practicum.shareit.user.repository.UserRepository;
+import ru.practicum.shareit.user.service.UserService;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -28,14 +30,14 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BookingServiceImpl implements BookingService {
     private final BookingRepository bookingRepository;
-    private final UserRepository userRepository;
-    private final ItemRepository itemRepository;
+    private final UserService userService;
+    private final ItemService itemService;
 
     @Override
     @Transactional
     public OutputBookingDto create(InputBookingDto bookingDto, Long userId) {
-        User user = userRepository.getUser(userId);
-        Item item = itemRepository.getItemById(bookingDto.getItemId());
+        User user = userService.getUser(userId);
+        Item item = itemService.getItemById(bookingDto.getItemId());
         if (bookingDto.getStart().isAfter(bookingDto.getEnd()) ||
                 bookingDto.getStart().isEqual(bookingDto.getEnd())) {
             throw new ValidationException("time isnt correct");
@@ -92,7 +94,7 @@ public class BookingServiceImpl implements BookingService {
     @Transactional(readOnly = true)
     @Override
     public List<OutputBookingDto> getBookingBooker(State state, Long bookerId, Long from, Long size) {
-        userRepository.getUser(bookerId);
+        userService.getUser(bookerId);
         Pageable pageable = Pagination.setPageable(from,size);
         List<Booking> bookings;
         switch (state) {
@@ -138,7 +140,7 @@ public class BookingServiceImpl implements BookingService {
     @Transactional(readOnly = true)
     @Override
     public List<OutputBookingDto> getBookingOwner(State state, Long ownerId, Long from, Long size) {
-        userRepository.getUser(ownerId);
+        userService.getUser(ownerId);
         Pageable pageable = Pagination.setPageable(from,size);
         List<Booking> bookings;
         switch (state) {
