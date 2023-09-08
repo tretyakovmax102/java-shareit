@@ -1,7 +1,6 @@
 package ru.practicum.shareit.booking.dto;
 
 import lombok.*;
-import ru.practicum.shareit.item.dto.ItemDto;
 import ru.practicum.shareit.valid.ValidateDate;
 
 import javax.validation.constraints.FutureOrPresent;
