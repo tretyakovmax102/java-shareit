@@ -16,7 +16,7 @@ public class UserDto {
     @Size(max = 50)
     private String name;
     @NotBlank
-    @Email(message = "incorrect email")
-    @Size(max = 256)
+    @Email(message = "incorect email")
+    @Size(max = 100)
     private String email;
 }

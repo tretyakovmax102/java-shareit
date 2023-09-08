@@ -28,4 +28,12 @@ public class Comment {
     private User author;
     @Column
     private LocalDateTime created = LocalDateTime.now();
+
+    public Comment(String text, Item item, User author, LocalDateTime created) {
+        this.text = text;
+        this.item = item;
+        this.author = author;
+        this.created = created;
+    }
+
 }

@@ -8,6 +8,7 @@ import ru.practicum.shareit.booking.model.State;
 import ru.practicum.shareit.booking.service.BookingService;
 
 import javax.validation.Valid;
+import javax.validation.constraints.PositiveOrZero;
 import java.util.List;
 
 @RestController
@@ -24,14 +25,18 @@ public class BookingController {
 
     @GetMapping
     public List<OutputBookingDto> getBookingUser(@RequestHeader(LINE) Long userId,
-                                                 @RequestParam(defaultValue = "ALL") String state) {
-        return bookingService.getBookingBooker(State.getState(state), userId);
+                                                 @RequestParam(defaultValue = "ALL") String state,
+                                                 @RequestParam(value = "from", required = false) @PositiveOrZero Long from,
+                                                 @RequestParam(value = "size", required = false) @PositiveOrZero Long size) {
+        return bookingService.getBookingBooker(State.getState(state), userId, from, size);
     }
 
     @GetMapping("/owner")
     public List<OutputBookingDto> getBookingOwner(@RequestHeader(LINE) Long userId,
-                                                  @RequestParam(defaultValue = "ALL") String state) {
-        return bookingService.getBookingOwner(State.getState(state), userId);
+                                                  @RequestParam(defaultValue = "ALL") String state,
+                                                  @RequestParam(value = "from", required = false) @PositiveOrZero Long from,
+                                                  @RequestParam(value = "size", required = false) @PositiveOrZero Long size) {
+        return bookingService.getBookingOwner(State.getState(state), userId, from, size);
     }
 
     @PostMapping

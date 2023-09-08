@@ -20,62 +20,58 @@ public class UserServiceDb implements UserService {
     private final UserRepository userRepository;
 
     @Override
-    @Transactional
     public UserDto create(User user) {
-        log.info("UserService: create implementation. User ID {}.", user.getId());
+        log.info("create user..");
         return UserMapper.toUserDto(userRepository.save(user));
     }
 
     @Override
     @Transactional
     public UserDto update(long id, Map<String, String> updates) {
+        log.info("update user..");
+
         User user = getUser(id);
         if (updates.containsKey("name")) {
             String name = updates.get("name");
             user.setName(name.trim());
+            log.info("name changed..");
         }
         if (updates.containsKey("email")) {
             String email = updates.get("email");
             user.setEmail(email);
+            log.info("email changed..");
         }
         userRepository.save(user);
-        log.info("UserService: update implementation. User ID {}.", user.getId());
+        log.info("user saved..");
         return UserMapper.toUserDto(getUser(id));
     }
 
     @Transactional(readOnly = true)
     @Override
     public User getUser(long id) {
-        log.info("UserService: findById implementation. User ID {}.", userRepository.findById(id));
+        log.info("get user..");
         return userRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("User user"));
+                .orElseThrow(() -> new NotFoundException("user not found"));
     }
 
     @Override
     public UserDto getUserDto(long id) {
-        log.info("UserService: getUserDto implementation. User ID {}.", userRepository.findById(id));
+        log.info("get UserDto..");
         return UserMapper.toUserDto(getUser(id));
     }
 
     @Transactional(readOnly = true)
     @Override
     public List<UserDto> getAll() {
-        log.info("UserService: getAll implementation");
+        log.info("getAll..");
         return UserMapper.toUserDtoList(userRepository.findAll());
     }
 
     @Transactional
     @Override
     public void delete(long userId) {
-        log.info("UserService: delete implementation. User ID {}.", userId);
+        log.info("delete user..");
         userRepository.deleteById(userId);
-    }
-
-    @Transactional
-    @Override
-    public void deleteAll() {
-        log.info("UserService: deleteAll implementation.");
-        userRepository.deleteAll();
     }
 
 }

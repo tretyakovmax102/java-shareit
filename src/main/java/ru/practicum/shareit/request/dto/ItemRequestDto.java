@@ -1,9 +1,23 @@
 package ru.practicum.shareit.request.dto;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import lombok.*;
+import ru.practicum.shareit.item.dto.ItemDtoRequest;
 
-@RestController
-@RequestMapping(path = "/requests")
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
+import java.util.List;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class ItemRequestDto {
+    private Long id;
+    @NotBlank
+    @Size(max = 200)
+    private String description;
+    private LocalDateTime created;
+    private List<ItemDtoRequest> items;
 }
