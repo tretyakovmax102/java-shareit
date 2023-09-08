@@ -5,7 +5,6 @@ import ru.practicum.shareit.valid.ValidateDate;
 import javax.validation.constraints.FutureOrPresent;
 import java.time.LocalDateTime;
 
-
 @AllArgsConstructor
 @Getter
 @Setter
