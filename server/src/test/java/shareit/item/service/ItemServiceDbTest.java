@@ -82,7 +82,7 @@ class ItemServiceDbTest {
 
         itemService.add(user.getId(), new ItemDtoRequest());
         ItemDto itemRes = itemService.getItemDtoById(1L,1L);
-        assertEquals(1l,itemRes.getId());
+        assertEquals(1L,itemRes.getId());
         assertTrue(itemRes.getComments().isEmpty());
     }
 
