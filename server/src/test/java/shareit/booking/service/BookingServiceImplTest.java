@@ -135,12 +135,12 @@ class BookingServiceImplTest {
         verify(bookingRepository,times(1))
                 .findAllByBookerIdOrderByStartDesc(anyLong(), any(Pageable.class));
 
-        assertEquals(List.of(), bookingService.getBookingBooker(State.ALL,anyLong(),null,null));
-        assertEquals(List.of(),bookingService.getBookingBooker(State.CURRENT,anyLong(),null,null));
-        assertEquals(List.of(),bookingService.getBookingBooker(State.REJECTED,anyLong(),null,null));
-        assertEquals(List.of(),bookingService.getBookingBooker(State.FUTURE,anyLong(),null,null));
-        assertEquals(List.of(),bookingService.getBookingBooker(State.PAST,anyLong(),null,null));
-        assertEquals(List.of(),bookingService.getBookingBooker(State.WAITING,anyLong(),null,null));
+        assertEquals(bookingService.getBookingBooker(State.ALL,anyLong(),null,null), List.of());
+        assertEquals(bookingService.getBookingBooker(State.CURRENT,anyLong(),null,null), List.of());
+        assertEquals(bookingService.getBookingBooker(State.REJECTED,anyLong(),null,null), List.of());
+        assertEquals(bookingService.getBookingBooker(State.FUTURE,anyLong(),null,null), List.of());
+        assertEquals(bookingService.getBookingBooker(State.PAST,anyLong(),null,null), List.of());
+        assertEquals(bookingService.getBookingBooker(State.WAITING,anyLong(),null,null), List.of());
     }
 
     @Test
@@ -190,12 +190,12 @@ class BookingServiceImplTest {
         verify(bookingRepository,times(1))
                 .findAllByOwnerId(anyLong(), any(Pageable.class));
 
-        assertEquals(List.of(), bookingService.getBookingOwner(State.ALL,anyLong(),null,null));
-        assertEquals(List.of(),bookingService.getBookingOwner(State.CURRENT,anyLong(),null,null));
-        assertEquals(List.of(),bookingService.getBookingOwner(State.REJECTED,anyLong(),null,null));
-        assertEquals(List.of(),bookingService.getBookingOwner(State.FUTURE,anyLong(),null,null));
-        assertEquals(List.of(),bookingService.getBookingOwner(State.PAST,anyLong(),null,null));
-        assertEquals(List.of(),bookingService.getBookingOwner(State.WAITING,anyLong(),null,null));
+        assertEquals(bookingService.getBookingOwner(State.ALL,anyLong(),null,null), List.of());
+        assertEquals(bookingService.getBookingOwner(State.CURRENT,anyLong(),null,null), List.of());
+        assertEquals(bookingService.getBookingOwner(State.REJECTED,anyLong(),null,null), List.of());
+        assertEquals(bookingService.getBookingOwner(State.FUTURE,anyLong(),null,null), List.of());
+        assertEquals(bookingService.getBookingOwner(State.PAST,anyLong(),null,null), List.of());
+        assertEquals(bookingService.getBookingOwner(State.WAITING,anyLong(),null,null), List.of());
 
     }
 }

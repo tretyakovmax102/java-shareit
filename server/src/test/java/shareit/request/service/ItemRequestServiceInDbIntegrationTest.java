@@ -40,17 +40,17 @@ class ItemRequestServiceInDbIntegrationTest {
                         .build());
 
         assertNotNull(itemRequest);
-        assertEquals(itemRequest.getId(),1L);
+        assertEquals(1L, itemRequest.getId());
 
         List<ItemRequest> listItemRequest = itemRequestService.getOwnItemRequest(user2.getId());
-        assertEquals(listItemRequest.size(),1);
-        assertEquals(listItemRequest.get(0).getId(),1L);
+        assertEquals(1, listItemRequest.size());
+        assertEquals(1L, listItemRequest.get(0).getId());
 
         List<ItemRequest> allItemRequest = itemRequestService.getAllItemRequest(user2.getId(),null,null);
         assertTrue(allItemRequest.isEmpty());
 
         ItemRequest itemRequest1 = itemRequestService.getItemRequest(user2.getId(),1L);
-        assertEquals(itemRequest1.getId(),1L);
-        assertEquals(itemRequest1.getDescription(),"need Item 2");
+        assertEquals(1L, itemRequest1.getId());
+        assertEquals("need Item 2", itemRequest1.getDescription());
     }
 }

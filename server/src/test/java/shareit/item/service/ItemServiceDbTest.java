@@ -82,7 +82,7 @@ class ItemServiceDbTest {
 
         itemService.add(user.getId(), new ItemDtoRequest());
         ItemDto itemRes = itemService.getItemDtoById(1L,1L);
-        assertEquals(itemRes.getId(),1L);
+        assertEquals(1l,itemRes.getId());
         assertTrue(itemRes.getComments().isEmpty());
     }
 
@@ -121,7 +121,7 @@ class ItemServiceDbTest {
         Page<Item> itemSearch = new PageImpl<>(List.of(ItemMapper.toItem(itemDtoRequest)), Pageable.unpaged(),1L);
 
         List<ItemDto> searchResEmpty = itemService.searchItems(1L, "",1L,1L);
-        assertEquals(searchResEmpty.size(),0);
+        assertEquals(0,searchResEmpty.size());
 
         Item item = itemService.getItemById(1L);
         item.setOwner(new User(1L, "1111", "1111"));
@@ -186,6 +186,6 @@ class ItemServiceDbTest {
                                 LocalDateTime.now().plusDays(2), BookingStatus.WAITING)
                 ));
         List<ItemDto> result = itemService.getAllUserItems(user1.getId(),null,null);
-        assertEquals(result.size(),0);
+        assertEquals(0,result.size());
     }
 }

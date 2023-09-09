@@ -16,7 +16,7 @@ public enum State {
         }
         try {
             return State.valueOf(text.toUpperCase().trim());
-        } catch (Exception e) {
+        } catch (RuntimeException e) {
             throw new ExceptionForUnsupport("Unknown state: UNSUPPORTED_STATUS");
         }
     }

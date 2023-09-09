@@ -36,12 +36,11 @@ public class BookingServiceImpl implements BookingService {
     public OutputBookingDto create(InputBookingDto bookingDto, Long userId) {
         User user = userService.getUser(userId);
         Item item = itemService.getItemById(bookingDto.getItemId());
-        if (bookingDto.getStart().isAfter(bookingDto.getEnd()) ||
-                bookingDto.getStart().isEqual(bookingDto.getEnd())) {
-            throw new ValidationException("time isnt correct");
+        if (bookingDto.getStart().isAfter(bookingDto.getEnd()) || bookingDto.getStart().isEqual(bookingDto.getEnd())) {
+            throw new ValidationException("time isn't correct");
         }
         if (item.getOwner().getId().equals(user.getId())) {
-            throw new NotFoundException("booker musnt be owner");
+            throw new NotFoundException("booker must be owner");
         }
         if (item.getAvailable()) {
             Booking booking = Booking.builder()
@@ -131,7 +130,6 @@ public class BookingServiceImpl implements BookingService {
                 log.info("BookingService: findBookingBooker implementation. User ID {}, state by default.",
                         bookerId);
         }
-        if (bookings.isEmpty()) throw new NotFoundException("booking owner no found");
         return BookingMapper.toOutputsBookingDtoList(bookings);
     }
 

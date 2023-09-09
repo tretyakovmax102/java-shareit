@@ -38,7 +38,7 @@ class ItemControllerTest {
     private ItemDto itemDto;
 
     @BeforeEach
-    void setUp() {
+    void testSetUp() {
         itemDto = ItemDto.builder()
                 .id(1L)
                 .name("item1")

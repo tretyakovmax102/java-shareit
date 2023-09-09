@@ -51,9 +51,9 @@ class ItemRequestRepositoryTest {
         List<ItemRequest> itemRequests = itemRequestRepository.findALlByRequesterInOrderByCreatedAsc(users,
                 Pageable.unpaged());
         assertEquals(3L, itemRequests.size());
-        assertEquals(item2.getId(), itemRequests.get(0).getRequester().getId());
-        assertEquals(item1.getId(), itemRequests.get(1).getRequester().getId());
-        assertEquals(item3.getId(), itemRequests.get(2).getRequester().getId());
+        assertEquals(itemRequests.get(0).getRequester().getId(), item2.getId());
+        assertEquals(itemRequests.get(1).getRequester().getId(), item1.getId());
+        assertEquals(itemRequests.get(2).getRequester().getId(), item3.getId());
     }
 
     @Test

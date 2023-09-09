@@ -18,11 +18,11 @@ class BookingMapperTest {
     void testToBookingDto() {
         Booking booking = generator.nextObject(Booking.class);
         BookingDto bookingDto = BookingMapper.toBookingDto(booking);
-        assertEquals(booking.getId(), bookingDto.getId());
-        assertEquals(booking.getItem().getId(), bookingDto.getItem().getId());
-        assertEquals(booking.getEnd(), bookingDto.getEnd());
-        assertEquals(booking.getStart(), bookingDto.getStart());
-        assertEquals(booking.getBooker().getId(), bookingDto.getBookerId());
+        assertEquals(bookingDto.getId(), booking.getId());
+        assertEquals(bookingDto.getItem().getId(), booking.getItem().getId());
+        assertEquals(bookingDto.getEnd(), booking.getEnd());
+        assertEquals(bookingDto.getStart(), booking.getStart());
+        assertEquals(bookingDto.getBookerId(), booking.getBooker().getId());
     }
 
     @Test
@@ -41,15 +41,15 @@ class BookingMapperTest {
         Booking booking1 = generator.nextObject(Booking.class);
         Booking booking2 = generator.nextObject(Booking.class);
         List<OutputBookingDto> bookingDtoList = BookingMapper.toOutputsBookingDtoList(List.of(booking1, booking2));
-        assertEquals(booking1.getId(), bookingDtoList.get(0).getId());
-        assertEquals(booking1.getItem().getId(), bookingDtoList.get(0).getItem().getId());
-        assertEquals(booking1.getEnd(), bookingDtoList.get(0).getEnd());
-        assertEquals(booking1.getStart(), bookingDtoList.get(0).getStart());
-        assertEquals(booking1.getBooker().getId(), bookingDtoList.get(0).getBooker().getId());
-        assertEquals(booking2.getId(), bookingDtoList.get(1).getId());
-        assertEquals(booking2.getItem().getId(), bookingDtoList.get(1).getItem().getId());
-        assertEquals(booking2.getEnd(), bookingDtoList.get(1).getEnd());
-        assertEquals(booking2.getStart(), bookingDtoList.get(1).getStart());
-        assertEquals(booking2.getBooker().getId(), bookingDtoList.get(1).getBooker().getId());
+        assertEquals(bookingDtoList.get(0).getId(), booking1.getId());
+        assertEquals(bookingDtoList.get(0).getItem().getId(), booking1.getItem().getId());
+        assertEquals(bookingDtoList.get(0).getEnd(), booking1.getEnd());
+        assertEquals(bookingDtoList.get(0).getStart(), booking1.getStart());
+        assertEquals(bookingDtoList.get(0).getBooker().getId(), booking1.getBooker().getId());
+        assertEquals(bookingDtoList.get(1).getId(), booking2.getId());
+        assertEquals(bookingDtoList.get(1).getItem().getId(), booking2.getItem().getId());
+        assertEquals(bookingDtoList.get(1).getEnd(), booking2.getEnd());
+        assertEquals(bookingDtoList.get(1).getStart(), booking2.getStart());
+        assertEquals(bookingDtoList.get(1).getBooker().getId(), booking2.getBooker().getId());
     }
 }

@@ -64,8 +64,8 @@ class ItemRequestServiceInDbTest {
                 .thenReturn(List.of(ItemRequestMapper.fromDto(itemRequestDto,user)));
 
         List<ItemRequest> requests = itemRequestService.getOwnItemRequest(1L);
-        assertEquals(requests.size(),1);
-        assertEquals(requests.get(0).getDescription(),"description1");
+        assertEquals(1, requests.size());
+        assertEquals("description1", requests.get(0).getDescription());
         verify(itemRequestRepository,times(1)).findByRequester_IdOrderByCreatedAsc(anyLong());
 
         assertThrows(NullPointerException.class,

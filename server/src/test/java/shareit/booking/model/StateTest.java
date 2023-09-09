@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class StateTest {
 
     @Test
-    void getState() {
+    void testGetState() {
         String str = "ALL";
         State state = State.getState(str);
         assertEquals(State.ALL, state);

@@ -25,7 +25,7 @@ class UserRepositoryTest {
         userRepository.save(user1);
         userRepository.save(user2);
         userRepository.save(user3);
-        assertEquals(userRepository.findAll().size() - 1, userRepository.findByIdNot(1L).size());
+        assertEquals(userRepository.findByIdNot(1L).size(), userRepository.findAll().size() - 1);
         assertEquals(0, userRepository.findByIdNot(1L).stream().filter(c -> c.getId() == 1L).count());
     }
 }

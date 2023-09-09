@@ -11,7 +11,7 @@ class ErrorHandlerTest {
     private ErrorHandler errorHandler;
 
     @BeforeEach
-    void setUp() {
+    void testSetUp() {
         errorHandler = new ErrorHandler();
     }
 

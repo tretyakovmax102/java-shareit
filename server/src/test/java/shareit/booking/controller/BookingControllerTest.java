@@ -60,7 +60,7 @@ class BookingControllerTest {
     }
 
     @Test
-    void create() {
+    void testCreate() {
         InputBookingDto bookingIn = InputBookingDto.builder()
                 .start(LocalDateTime.now().plusDays(1))
                 .end(LocalDateTime.now().plusDays(2))

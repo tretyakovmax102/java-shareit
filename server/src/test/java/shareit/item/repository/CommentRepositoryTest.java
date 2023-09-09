@@ -30,7 +30,7 @@ class CommentRepositoryTest {
 
     @Test
     @DirtiesContext
-    void findAllByItemIdTest() {
+    void testFindAllByItemId() {
         User user1 = new User(1L,"user1","user1@mail.ru");
         userRepository.save(user1);
 
@@ -55,7 +55,7 @@ class CommentRepositoryTest {
         Comment comment4 = commentRepository.save(new Comment("comment4", item2,  user2, date));
 
         List<Comment> comments = commentRepository.findAllByItemIdIn(List.of(item1.getId(),item2.getId()));
-        assertEquals(comments.size(),4);
+        assertEquals(4,comments.size());
         assertEquals(comments.get(0).getText(),comment1.getText());
         assertEquals(comments.get(1).getText(),comment2.getText());
         assertEquals(comments.get(2).getText(),comment3.getText());

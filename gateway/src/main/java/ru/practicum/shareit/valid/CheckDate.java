@@ -7,6 +7,10 @@ import javax.validation.ConstraintValidatorContext;
 import java.time.LocalDateTime;
 
 public class CheckDate implements ConstraintValidator<ValidateDate, BookingDto> {
+
+    /*
+    Метод используется для инициализации ValidateDate и не требует логики внутри
+     */
     @Override
     public void initialize(ValidateDate constraintAnnotation) {
     }

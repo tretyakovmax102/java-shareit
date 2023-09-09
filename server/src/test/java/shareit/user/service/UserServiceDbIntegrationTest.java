@@ -65,7 +65,7 @@ class UserServiceDbIntegrationTest {
         userService.create(user3);
 
         List<UserDto> userList = userService.getAll();
-        assertEquals(userList.size(),3);
+        assertEquals(3, userList.size());
         assertEquals(userService.getUser(1L).getId(), userList.get(0).getId());
         assertEquals(userService.getUser(1L).getName(), userList.get(0).getName());
         assertEquals(userService.getUser(1L).getEmail(), userList.get(0).getEmail());
